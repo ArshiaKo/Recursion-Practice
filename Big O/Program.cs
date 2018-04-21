@@ -8,7 +8,7 @@ namespace Big_O
 {
     class Program
     {
-
+        // 4/27/18:Do Binary To Decimal 
         #region RECURSION
         public static int RecursiveFactorial(int number)
         {
@@ -71,13 +71,21 @@ namespace Big_O
             return finalstring;
         }
         #endregion
-        #region Binary Recursively
-        #region ReBinary_Input  
+        #region Binary Recursively      
         public static string ToBinary(int num)
         {
-            return REBinary("", num);
+            string binaryNum = REBinary("", num);
+
+            string reverse = "";
+
+            for(int i = binaryNum.Length - 1;i > -1;i--)
+            {
+                reverse += binaryNum[i];
+            }
+
+            return reverse;
         }
-        #endregion
+    
         public static string REBinary(string rebinary, int Num)
         {
             int newNum = Num / 2;
@@ -91,7 +99,7 @@ namespace Big_O
         }
         #endregion
         static void Main(string[] args)
-        {   int num = 1;
+        {   int num = 100;
             #region Binary Irratively
             //Delete Extra Zero
             /*
