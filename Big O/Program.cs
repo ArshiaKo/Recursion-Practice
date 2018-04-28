@@ -8,7 +8,8 @@ namespace Big_O
 {
     class Program
     {
-        // 4/27/18:Do Binary To Decimal 
+        // 4/20/18:Do Binary To Decimal 
+        // 5/4/2018:Do Multiplication Recursivly
         #region RECURSION
         public static int RecursiveFactorial(int number)
         {
@@ -45,7 +46,8 @@ namespace Big_O
         #endregion
         #region BinaryIrrativly
         public static string Binary()
-        {   Console.WriteLine("Convert to Binary:");
+        {
+            Console.WriteLine("Convert to Binary:");
             int number = int.Parse(Console.ReadLine());
             int tempNum = number;
             string finalstring = "";
@@ -78,14 +80,14 @@ namespace Big_O
 
             string reverse = "";
 
-            for(int i = binaryNum.Length - 1;i > -1;i--)
+            for (int i = binaryNum.Length - 1; i > -1; i--)
             {
                 reverse += binaryNum[i];
             }
 
             return reverse;
         }
-    
+
         public static string REBinary(string rebinary, int Num)
         {
             int newNum = Num / 2;
@@ -98,21 +100,74 @@ namespace Big_O
             return REBinary(rebinary, newNum);
         }
         #endregion
+        #region Decimal Irrativly
+
+        public static int DecimalIrrativly(string Text)
+        {
+            int sum = 0;
+
+            for (int index = Text.Length - 1; index > -1; index--)
+            {
+                if (Text[index] == '1')
+                {
+                    sum += (int)Math.Pow(2, Text.Length - 1 - index);
+                }
+            }
+
+            return sum;
+        }
+
+        #endregion
+        #region DecimalRecursivly
+        public static int DecimalHelper(int Number)
+        {            
+            return DecimalRecursivly(Number.ToString(), 0, Number.ToString().Length);
+        }
+        public static int DecimalRecursivly(string Text, int Sum, int orignalLength)
+        {            
+            if (Text.Length <= 0)
+            {
+                return Sum;
+            }
+
+            if (Text[Text.Length - 1] == '1')
+            {
+                Sum += (int)Math.Pow(2, orignalLength - Text.Length);
+            }
+
+            return DecimalRecursivly(Text.Remove(Text.Length - 1), Sum, orignalLength);
+        }
+        #endregion
+        #region REMultipliction
+        public static int REMultiplication(int Num1, int Num2)
+        {
+           
+        }
+        #endregion
         static void Main(string[] args)
-        {   int num = 100;
+        {
+            #region REMultiplication 
+            Console.WriteLine(REMultiplication(1,2));
+            #endregion
+            #region REBinary To Decimal
+            //Console.WriteLine(DecimalHelper(101));
+            #endregion
+            #region Binary To Decimal
+            //Console.WriteLine(DecimalIrrativly(num.ToString()));
+            #endregion
             #region Binary Irratively
             //Delete Extra Zero
             /*
             for (int i = 1; i > 0; i++)
             {
-                Console.WriteLine("\t\t\t{0}\n",Binary());
-                Console.WriteLine("Type Enter, Then Another Number You Want to Convert to Binary, Otherwise Click Alt F4");
+                Console.WriteLine(Binary());
+
                 Console.ReadKey();
             }*/
             #endregion
             #region Binary Recursively
-            
-            Console.WriteLine(ToBinary(num));
+
+            //Console.WriteLine(ToBinary(num));
             #endregion
             Console.ReadKey();
         }
